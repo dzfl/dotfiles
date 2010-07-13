@@ -1,0 +1,2 @@
+wget http://github.com/dzfl/dotfiles/raw/master/setup.rb
+ruby setup.rb
