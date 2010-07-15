@@ -67,7 +67,7 @@ set scrolloff=5
 " タブや改行を表示する
 set list
 " 特殊文字の置き換え
-set listchars=tab:.\ ,trail:_,eol:\ ,extends:>,precedes:<
+set listchars=tab:>-,trail:_,eol:\ ,extends:>,precedes:<
 
 
 " マウスモードを有効
