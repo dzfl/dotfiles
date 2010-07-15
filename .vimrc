@@ -127,12 +127,12 @@ autocmd FileType *
 "-----------------------------
 let g:gist_clip_command = 'xclip -selection clipboard'
 
-let g:neocomplcache_enable_at_startup = 1
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_TagsAutoUpdate = 1
+let g:neocomplcache_enable_at_startup         = 1
+let g:NeoComplCache_SmartCase                 = 1
+let g:NeoComplCache_TagsAutoUpdate            = 1
 let g:NeoComplCache_PreviousKeywordCompletion = 1
-let g:NeoComplCache_MinSyntaxLength = 3
-let g:NeoComplCache_SkipInputTime = '0.2'
+let g:NeoComplCache_MinSyntaxLength           = 3
+let g:NeoComplCache_SkipInputTime             = '0.2'
 
 " zencoding.vim
 let g:user_zen_expandabbr_key = '<c-e>'
@@ -140,27 +140,37 @@ let g:user_zen_expandabbr_key = '<c-e>'
 " pathogen.vim
 call pathogen#runtime_append_all_bundles()
 
+" fuzzyfinder.vim
+let g:fuf_modesDisable   = [ 'buffer', 'mrufile', 'mrucmd' ]
+let g:fuf_keyOpen        = '<C-l>'
+let g:fuf_keyOpenTabpage = '<CR>'
+let g:fuf_file_exclude   = '\v\~$|\.(o|exe|bak|swp|gif|jpg|png|mp3|ogg)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+nnoremap <silent> ff :FufFile **/<CR>
+nnoremap <silent> fl :FufFile<CR>
+
+
+
 "-----------------------------
-map <F2> <ESC>:bp<CR>			" 前のバッファへ
-map <F3> <ESC>:bn<CR>			" 次のバッファへ
-map <F4> <ESC>:bw<CR>			" バッファを閉じる
-map <F5> <ESC>:tabnew<CR>		" 新しいタブ
-map <F6> <ESC>:tabprevious<CR>	" 前のタブ
-map <F7> <ESC>:tabnext<CR>		" 次のタブ
-map <F8> <ESC>:tabclose<cr>		" タブを閉じる
+map <F2> <ESC>:bp<CR>          " 前のバッファへ
+map <F3> <ESC>:bn<CR>          " 次のバッファへ
+map <F4> <ESC>:bw<CR>          " バッファを閉じる
+map <F5> <ESC>:tabnew<CR>      " 新しいタブ
+map <F6> <ESC>:tabprevious<CR> " 前のタブ
+map <F7> <ESC>:tabnext<CR>     " 次のタブ
+map <F8> <ESC>:tabclose<cr>    " タブを閉じる
 
 "-----------------------------
 setlocal omnifunc=syntaxcomplete#Complete
 
 autocmd! BufRead,BufNewFile *.as set filetype=actionscript
 autocmd FileType actionscript :set dictionary=$HOME/.vim/dict/actionscript.dict
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading    = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails             = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType yaml set expandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
-autocmd FileType ruby set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
+autocmd FileType yaml   set   expandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
+autocmd FileType ruby   set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 autocmd FileType python set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
-autocmd FileType php set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
+autocmd FileType php    set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 
 autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skeleton.ruby
 autocmd BufNewFile *.py 0r $HOME/.vim/templates/skeleton.py
