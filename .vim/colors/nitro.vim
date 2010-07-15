@@ -1,6 +1,6 @@
 " Vim color file
-" Maintainer:tomo <tomo@dzfl.jp>
-" Last Change:2007-11-05
+" Maintainer: dzfl <tomo.dzfl@gmail.com>
+" Last Change: 2010-07-15
 """
 let colors_name = "dzfl"
 
