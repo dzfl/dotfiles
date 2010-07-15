@@ -154,13 +154,14 @@ nnoremap <silent> fl :FufFile<CR>
 
 
 "-----------------------------
-map <F2> <ESC>:bp<CR>          " 前のバッファへ
-map <F3> <ESC>:bn<CR>          " 次のバッファへ
-map <F4> <ESC>:bw<CR>          " バッファを閉じる
-map <F5> <ESC>:tabnew<CR>      " 新しいタブ
-map <F6> <ESC>:tabprevious<CR> " 前のタブ
-map <F7> <ESC>:tabnext<CR>     " 次のタブ
-map <F8> <ESC>:tabclose<cr>    " タブを閉じる
+nnoremap <silent> bd <Esc>:bw<CR>
+nnoremap <silent> bn <Esc>:bn<CR>
+nnoremap <silent> bp <Esc>:bp<CR>
+nnoremap <silent> tc <Esc>:tabnew<CR>
+nnoremap <silent> td <Esc>:tabclose<CR>
+nnoremap <silent> tn <Esc>:tabnext<CR>
+nnoremap <silent> tp <Esc>:tabprevious<CR>
+
 
 "-----------------------------
 setlocal omnifunc=syntaxcomplete#Complete
