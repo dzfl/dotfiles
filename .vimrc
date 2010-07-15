@@ -128,7 +128,6 @@ autocmd FileType *
 let g:gist_clip_command = 'xclip -selection clipboard'
 
 let g:neocomplcache_enable_at_startup = 1
-let g:NeoComplCache_EnableQuickMatch = 0
 let g:NeoComplCache_SmartCase = 1
 let g:NeoComplCache_TagsAutoUpdate = 1
 let g:NeoComplCache_PreviousKeywordCompletion = 1
