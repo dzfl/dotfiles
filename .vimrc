@@ -176,30 +176,6 @@ autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skeleton.ruby
 autocmd BufNewFile *.py 0r $HOME/.vim/templates/skeleton.py
 
 
-
-"-----------------------------
-"set runtimepath+=$HOME/.vim/plugin/*
-"set runtimepath+=$HOME/src/vim-plugins/
-
-"set runtimepath&
-"
-"function! s:SetOtherPluginsPath()
-"    "otherPlugins直下のディレクトリを取得"
-"    let dir = '~/src/vim-plugins/'
-"    let dirs = map(split(glob(fnamemodify(dir, ':p').'*/'), '\n'), 
-"        \   'fnamemodify(v:val, ":h")')
-"
-"    "それらのafterも生成"
-"    let dirsAfter = map(copy(dirs), 'v:val."/after"')
-"
-"    execute "set runtimepath&"
-"    let &runtimepath = join(dirs + [&runtimepath] + dirsAfter, ',')
-"endfunction
-"
-"call s:SetOtherPluginsPath()
-
-
-
 "-----------------------------
 " <Esc>連打で検索結果の色付けを解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
