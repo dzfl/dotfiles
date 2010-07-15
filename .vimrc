@@ -149,7 +149,7 @@ let g:fuf_keyOpen        = '<C-l>'
 let g:fuf_keyOpenTabpage = '<CR>'
 let g:fuf_file_exclude   = '\v\~$|\.(o|exe|bak|swp|gif|jpg|png|mp3|ogg)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
 nnoremap <silent> ff :FufFile **/<CR>
-nnoremap <silent> fl :FufFile<CR>
+nnoremap <silent> fl :FufLine<CR>
 
 
 
