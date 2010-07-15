@@ -122,24 +122,27 @@ precmd() {
     #fi
 }
 
-local WHITE=$'%{\e[38;5;15m%}'
-local ORANGE=$'%{\e[38;5;9m%}'
-local RED=$'%{\e[38;5;1m%}'
-local TEAL=$'%{\e[38;5;6m%}'
-local AQUA=$'%{\e[38;5;14m%}'
-local NAVY=$'%{\e[38;5;12m%}'
-local LIGHTRED=$'%{\e[38;5;196m%}'
-local DARKRED=$'%{\e[38;5;95m%}'
-local GRAY=$'%{\e[38;5;250m%}'
+
+local C_NC=$'%{\e[38;5;252m%}'
+local C_BLACK=$'%{\e[38;5;240m%}'
+local C_L_WHITE=$'%{\e[38;5;255m%}'
+local C_BLUE=$'%{\e[38;5;45m%}'
+local C_GREEN=$'%{\e[38;5;114m%}'
+local C_CYAN=$'%{\e[38;5;117m%}'
+local C_RED=$'%{\e[38;5;174m%}'
+local C_PURPLE=$'%{\e[38;5;177m%}'
+local C_YELLOW=$'%{\e[38;5;229m%}'
+local C_GRAY=$'%{\e[38;5;247m%}'
+
 
 PROMPT=$'\n'\
-$GRAY"["\
-$ORANGE"\${USER}"$GRAY"@"$NAVY"\${HOST}"\
-$GRAY"] "\
-$WHITE"\${newPWD}"\
-"%1(v|%f$TEAL%1v%f|)"\
+$C_NC"["\
+$C_WHITE"\${USER}"$C_BLACK"@"$C_GRAY"\${HOST}"\
+$C_NC"] "\
+$C_CYAN"\${newPWD}"\
+"%1(v|%f$C_RED%1v%f|)"\
 $'\n'\
-$WHITE"| q ﾄﾟ_ ﾟﾘ| "$AQUA"%(!.#.$)"%b\
+$C_CYAN"%(!.#.$)"%b\
 $'%{\e[m%} '
 
 ### history
@@ -194,7 +197,7 @@ function reload() {
 # 256色確認
 function pcolor() {
     for ((f = 0; f < 255; f++)); do
-        printf "\e[38;5;%dm %3d*\e[m" $f $f
+        printf "\e[38;5;%dm %3d*■\e[m" $f $f
         if [[ $f%8 -eq 7 ]] then
             printf "\n"
         fi
