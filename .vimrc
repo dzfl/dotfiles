@@ -125,15 +125,6 @@ autocmd FileType *
 
 
 "-----------------------------
-let g:hatena_user = 'dzfl'
-
-let g:Modeliner_format = 'fenc= ff= et ts= sts= sw='
-
-let g:firefox = {
-    \'host': '192.168.1.17',
-    \'port': 4242,
-\}
-
 let g:gist_clip_command = 'xclip -selection clipboard'
 
 let g:neocomplcache_enable_at_startup = 1
