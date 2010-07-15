@@ -134,6 +134,9 @@ let g:NeoComplCache_PreviousKeywordCompletion = 1
 let g:NeoComplCache_MinSyntaxLength           = 3
 let g:NeoComplCache_SkipInputTime             = '0.2'
 
+" Align.vim
+let g:Align_xstrlen=3 " 日本語など幅広文字に対応
+
 " zencoding.vim
 let g:user_zen_expandabbr_key = '<c-e>'
 
