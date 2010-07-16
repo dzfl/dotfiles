@@ -19,6 +19,9 @@ autodetach on
 # スタートアップ画面のオフ
 startup_message off
 
+# 新しいwindowを開く度に/etc/utmpにentryを追加するか
+deflogin off
+
 # ビープを鳴らすときに錫際に音を鳴らさず、下のメッセージ領域にメッセージを表示させる。
 vbell n
 
