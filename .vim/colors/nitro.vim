@@ -49,7 +49,7 @@ hi FoldColumn      ctermfg=109
 "hi Directory       ctermfg=2    ctermbg=NONE
 hi LineNr          ctermfg=239  ctermbg=0
 hi NonText         ctermfg=88
-hi SpecialKey      ctermfg=160  ctermbg=NONE
+hi SpecialKey      ctermfg=237  ctermbg=NONE
 hi Title           ctermfg=109  ctermbg=NONE
 hi Visual          ctermfg=0    ctermbg=109
 
