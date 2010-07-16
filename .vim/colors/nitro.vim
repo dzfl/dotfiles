@@ -16,7 +16,7 @@ hi Normal          ctermfg=15 ctermbg=NONE
 
 " Search
 hi IncSearch       ctermfg=0   ctermbg=47
-hi Search          ctermfg=0   ctermbg=47
+hi Search          ctermfg=0   ctermbg=42
 hi MatchParen      ctermfg=15  ctermbg=102
 
 " Messages
@@ -27,7 +27,7 @@ hi MoreMsg         ctermfg=109
 hi Question        ctermfg=15
 
 " Split area
-hi StatusLine      ctermfg=0   ctermbg=15 cterm=NONE
+hi StatusLine      ctermfg=254   ctermbg=237 cterm=NONE
 hi StatusLineNC    ctermfg=0   ctermbg=243 cterm=NONE
 hi VertSplit       ctermfg=240
 hi WildMenu        ctermfg=109
