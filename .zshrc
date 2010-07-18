@@ -98,7 +98,7 @@ setopt PROMPT_SUBST
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats ' %s:%b'
 zstyle ':vcs_info:*' actionformats ' %s:%b\!%a'
-precmd() {
+function prompt_misc() {
     # vcs on prompt
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -121,6 +121,7 @@ precmd() {
     #    newPWD="..."${newPWD[${offset},-1]}
     #fi
 }
+precmd_functions=($precmd_functions prompt_misc)
 
 
 local C_NC=$'%{\e[38;5;252m%}'
@@ -230,16 +231,18 @@ if type keychain &> /dev/null; then
     source ${HOME}/.keychain/$(hostname)-sh
 fi
 
-preexec() {
-    # for screen
-    if [ "$TERM" = "screen-bce" ]; then
-        echo -ne "\ek${1%% *}\e\\"
-    fi
+function last_command_for_screen_title() {
+    [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
+    #if [ "$TERM" = "screen-bce" ]; then
+    #    echo -ne "\ek${1%% *}\e\\"
+    #fi
+}
+preexec_functions=($preexec_functions last_command_for_screen_title)
 
-    # for outputz.com
+# for outputz.com
 #    if [ ${1} ]; then
 #        key=`ruby -rubygems -e 'require "pit";print Pit.get("outputz.com")["key"]'`
 #        curl -s http://outputz.com/api/post -F key=${key} -F uri=http://zsh.localhost/ -F size=${#1} >/dev/null
 #    fi
-}
+
 
