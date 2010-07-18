@@ -148,6 +148,7 @@ let g:fuf_modesDisable   = [ 'buffer', 'mrufile', 'mrucmd' ]
 let g:fuf_keyOpen        = '<CR>'
 let g:fuf_keyOpenTabpage = '<C-j>'
 let g:fuf_file_exclude   = '\v\~$|\.(o|exe|bak|swp|gif|jpg|png|mp3|ogg)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+nnoremap <silent> fd :FufDir<CR>
 nnoremap <silent> ff :FufFile **/<CR>
 nnoremap <silent> fl :FufLine<CR>
 
