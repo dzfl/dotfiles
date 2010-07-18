@@ -30,7 +30,7 @@ defscrollback 10000
 
 caption splitonly "%{= kw}%?%F%{= kr}%?%3n %t%? [%h]%?"
 #hardstatus alwayslastline "[%02c] %-w %{.rk}%{!}%n%f%t%{dd} %+w %= %l"
-hardstatus alwayslastline "%{= kw}[%02c] %`%-w%{=b kW}%n%f%t%{-}%+w %= [%H:%l]"
+hardstatus alwayslastline "%{= kw}[%02c] %`%-w%{=b kW}%n %f%t%{-}%+w %= [%H:%l]"
 #idle 10
 #blankerprg /home/tmp/nil.rb
 sorendition "+rb .k"
