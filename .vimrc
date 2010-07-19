@@ -50,8 +50,14 @@ set number
 set ruler
 " 入力中のコマンドをステータスに表示する
 set showcmd
+" 移動キーを押しても括弧の強調を有効にする
+set cpoptions-=m
+set matchtime=3
 " 括弧入力時の対応する括弧を表示
 set showmatch
+" <>にもマッチするようにする
+set matchpairs+=<:>
+
 " ステータスラインを常に表示
 set laststatus=2
 " ステータスライン
