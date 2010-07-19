@@ -192,13 +192,6 @@ autocmd BufNewFile *.py 0r $HOME/.vim/templates/skeleton.py
 " <Esc>連打で検索結果の色付けを解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" 括弧等の自動入力
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-
 " 検索語が中心に来るように
 " ([zz]はカレント行を画面中央にする)
 nmap n nzz
