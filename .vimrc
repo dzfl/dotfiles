@@ -285,3 +285,8 @@ function InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
+" 場所毎の設定ファイル読み込み
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
+
