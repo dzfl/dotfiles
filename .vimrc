@@ -207,6 +207,9 @@ nnoremap k gk
 nnoremap <UP> g<UP>
 nnoremap <DOWN> g<DOWN>
 
+" <C-d>: delete char.
+inoremap <C-d> <Del>
+
 " http://vim-users.jp/2009/10/hack91/
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ?  getcmdtype() == '?' ? '\?' : '?'
