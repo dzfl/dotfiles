@@ -17,7 +17,7 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim
 LISRMAX=0
 export LSCOLORS=bx
-export PAGER=lv
+export PAGER="/usr/bin/lv -c"
 
 #補完リストが多いときに尋ねる数
 # -1 : 尋ねない
@@ -161,15 +161,16 @@ setopt complete_aliases
 alias cdh="cd ~"
 alias less="/usr/bin/less -r"
 alias ls="/bin/ls -F --color"
-alias lv="lv -c"
 alias ll="ls -alh"
+alias lv="lv -c"
 alias df="df -hT"
 alias du="du -sh"
-alias tx="tar xzvf"
-alias tc="tar czvf"
-alias -g lG='| grep '
-alias -g lV='| lv '
-alias -g lL='| less '
+alias tgx="tar xzvf"
+alias tgc="tar czvf"
+alias txx="tar Jxvf"
+alias txc="tar Jcvf"
+alias -g G='| grep '
+alias -g L='| lv'
 alias apacherestart='sudo apache2ctl configtest && apache2ctl gracefula'
 alias vim="vim -X"
 
