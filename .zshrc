@@ -94,6 +94,10 @@ cdpath=($HOME)
 # PROMPTに彩色
 setopt PROMPT_SUBST
 
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
 # vcs on prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats ' %s:%b'
