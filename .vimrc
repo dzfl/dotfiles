@@ -159,8 +159,6 @@ nnoremap <silent> ff :FufFile **/<CR>
 nnoremap <silent> fl :FufLine<CR>
 nnoremap <silent> fr :FufMruFile<CR>
 
-
-
 "-----------------------------
 nnoremap <silent> bd <Esc>:bw<CR>
 nnoremap <silent> bn <Esc>:bn<CR>
@@ -292,4 +290,21 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+function! ReloadFirefox()
+    if has('ruby')
+:ruby << EOF
+    require "net/telnet"
+    telnet = Net::Telnet.new({
+        "Host" => "192.168.1.17",
+        "Port" => 4242
+        })
+        telnet.puts("content.location.reload(true)")
+        telnet.close
+EOF
+    endif
+endfunction
+command! ReloadFirefox :call ReloadFirefox()
+command! FirefoxStartObserve autocmd BufWritePost <buffer> :ReloadFirefox
+command! FirefoxStopObserve autocmd! BufWritePost <buffer>
 
