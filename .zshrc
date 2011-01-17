@@ -96,7 +96,7 @@ setopt PROMPT_SUBST
 
 # zmv
 autoload -Uz zmv
-alias zmv='noglob zmv -W'
+#alias zmv='noglob zmv -W'
 
 # vcs on prompt
 autoload -Uz vcs_info
