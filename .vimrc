@@ -299,7 +299,7 @@ function! ReloadFirefox()
         "Host" => "192.168.1.17",
         "Port" => 4242
         })
-        telnet.puts("content.location.reload(true)")
+        telnet.puts("content.location.reload(true)\n")
         telnet.close
 EOF
     endif
