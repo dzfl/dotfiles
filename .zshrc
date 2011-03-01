@@ -5,7 +5,7 @@
 
 ### path
 FLEX_HOME='/usr/local/lib/flex'
-PATH="$PATH:$HOME/bin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
+PATH="$PATH:/usr/sbin:$HOME/bin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
 export PATH
 
 export RUBYOPT=rubygems
