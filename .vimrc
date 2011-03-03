@@ -149,6 +149,34 @@ let g:user_zen_expandabbr_key = '<c-e>'
 " pathogen.vim
 call pathogen#runtime_append_all_bundles()
 
+" Unite.vim
+nnoremap [unite] <Nop>
+nmap f [unite]
+
+nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files tab file_mru bookmark file<CR>
+nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=register register<CR>
+nnoremap  [unite]s  :<C-u>Unite source<CR>
+
+let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
+" let g:unite_source_file_mru_filename_format = '(%Y-%m-%d %H:%M:%S)'
+" let g:unite_source_directory_mru_time_format = '(%Y-%m-%d %H:%M:%S)'
+
+"" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+call unite#custom_default_action('files', 'tabopen')
+call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
+call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
+call unite#set_substitute_pattern('files', '^\\', '~/*')
+
+
+"" C-jでバッファに開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
+
+
 " fuzzyfinder.vim
 " let g:fuf_modesDisable   = [ 'buffer', 'mrucmd' ]
 " let g:fuf_keyOpen        = '<CR>'
