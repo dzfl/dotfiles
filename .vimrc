@@ -150,14 +150,14 @@ let g:user_zen_expandabbr_key = '<c-e>'
 call pathogen#runtime_append_all_bundles()
 
 " fuzzyfinder.vim
-let g:fuf_modesDisable   = [ 'buffer', 'mrucmd' ]
-let g:fuf_keyOpen        = '<CR>'
-let g:fuf_keyOpenTabpage = '<C-j>'
-let g:fuf_file_exclude   = '\v\~$|\.(o|exe|bak|swp|gif|jpg|png|mp3|ogg)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])'
-nnoremap <silent> fd :FufDir<CR>
-nnoremap <silent> ff :FufFile **/<CR>
-nnoremap <silent> fl :FufLine<CR>
-nnoremap <silent> fr :FufMruFile<CR>
+" let g:fuf_modesDisable   = [ 'buffer', 'mrucmd' ]
+" let g:fuf_keyOpen        = '<CR>'
+" let g:fuf_keyOpenTabpage = '<C-j>'
+" let g:fuf_file_exclude   = '\v\~$|\.(o|exe|bak|swp|gif|jpg|png|mp3|ogg)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])'
+" nnoremap <silent> fd :FufDir<CR>
+" nnoremap <silent> ff :FufFile **/<CR>
+" nnoremap <silent> fl :FufLine<CR>
+" nnoremap <silent> fr :FufMruFile<CR>
 
 "-----------------------------
 nnoremap <silent> bd <Esc>:bw<CR>
