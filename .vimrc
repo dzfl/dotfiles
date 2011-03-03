@@ -134,11 +134,12 @@ autocmd FileType *
 let g:gist_clip_command = 'xclip -selection clipboard'
 
 let g:neocomplcache_enable_at_startup         = 1
-let g:NeoComplCache_SmartCase                 = 1
-let g:NeoComplCache_TagsAutoUpdate            = 1
-let g:NeoComplCache_PreviousKeywordCompletion = 1
-let g:NeoComplCache_MinSyntaxLength           = 3
-let g:NeoComplCache_SkipInputTime             = '0.2'
+let g:neocomplcache_enable_ignore_case        = 1
+let g:neocomplCache_SmartCase                 = 1
+let g:neocomplCache_TagsAutoUpdate            = 1
+let g:neocomplCache_PreviousKeywordCompletion = 1
+let g:neocomplCache_MinSyntaxLength           = 3
+let g:neocomplCache_SkipInputTime             = '0.2'
 
 " Align.vim
 let g:Align_xstrlen=3 " 日本語など幅広文字に対応
