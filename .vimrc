@@ -133,6 +133,7 @@ autocmd FileType *
 "-----------------------------
 let g:gist_clip_command = 'xclip -selection clipboard'
 
+" neocomplcache.vim
 let g:neocomplcache_enable_at_startup         = 1
 let g:neocomplcache_enable_ignore_case        = 1
 let g:neocomplCache_SmartCase                 = 1
@@ -141,15 +142,9 @@ let g:neocomplCache_PreviousKeywordCompletion = 1
 let g:neocomplCache_MinSyntaxLength           = 3
 let g:neocomplCache_SkipInputTime             = '0.2'
 
-" Align.vim
-let g:Align_xstrlen=3 " 日本語など幅広文字に対応
-
-" zencoding.vim
-let g:user_zen_expandabbr_key = '<c-e>'
 
 " pathogen.vim
 call pathogen#runtime_append_all_bundles()
-
 
 " Unite.vim
 nnoremap [unite] <Nop>
