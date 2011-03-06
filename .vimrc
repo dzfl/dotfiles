@@ -50,6 +50,7 @@ set number
 set ruler
 " 入力中のコマンドをステータスに表示する
 set showcmd
+set showmode
 " 移動キーを押しても括弧の強調を有効にする
 set cpoptions-=m
 set matchtime=3
