@@ -157,7 +157,7 @@ nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=register register<CR>
 nnoremap  [unite]s  :<C-u>Unite source<CR>
 
 let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
+let g:unite_source_file_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
 " let g:unite_source_file_mru_filename_format = '(%Y-%m-%d %H:%M:%S)'
 " let g:unite_source_directory_mru_time_format = '(%Y-%m-%d %H:%M:%S)'
 "let g:unite_enable_ignore_case = 1
