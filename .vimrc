@@ -137,6 +137,7 @@ let g:gist_clip_command = 'xclip -selection clipboard'
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup         = 1
 let g:neocomplcache_enable_ignore_case        = 1
+let g:neocomplcache_enable_auto_delimiter     = 1
 let g:neocomplCache_SmartCase                 = 1
 let g:neocomplCache_TagsAutoUpdate            = 1
 let g:neocomplCache_PreviousKeywordCompletion = 1
@@ -158,6 +159,8 @@ nnoremap  [unite]s  :<C-u>Unite source<CR>
 
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
+let g:unite_source_file_mru_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
+let g:unite_source_file_rec_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|sw[po]|mp3\)$\|\%(^\|/\)\.\%(hg\|git\|bzr\|svn\)\%($\|/\)'
 " let g:unite_source_file_mru_filename_format = '(%Y-%m-%d %H:%M:%S)'
 " let g:unite_source_directory_mru_time_format = '(%Y-%m-%d %H:%M:%S)'
 "let g:unite_enable_ignore_case = 1
@@ -166,7 +169,7 @@ let g:unite_source_file_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
-call unite#custom_default_action('files', 'tabopen')
+call unite#custom_default_action('file,files', 'tabopen')
 call unite#custom_default_action('ref', 'adove')
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
