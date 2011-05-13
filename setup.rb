@@ -49,4 +49,6 @@ end
 # vim vundle plugin submodule checkout
 sh 'git submodule init'
 sh 'git submodule update'
+p "!! forgot vim plugin install"
+p "    :BundleInstall"
 
