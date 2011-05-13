@@ -46,3 +46,7 @@ Dir[".*"].reject {|i| /\.$|^\.git$/ === i }.each do |i|
 	link i, "~/#{i}"
 end
 
+# vim vundle plugin submodule checkout
+sh 'git submodule init'
+sh 'git submodule update'
+
