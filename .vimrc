@@ -134,6 +134,24 @@ autocmd FileType *
 "-----------------------------
 let g:gist_clip_command = 'xclip -selection clipboard'
 
+" vundle.vim
+filetype off " temporary off
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'ujihisa/neco-look'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
+
+filetype plugin indent on " temporary on
+
+
+
+
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup         = 1
 let g:neocomplcache_enable_ignore_case        = 1
@@ -143,10 +161,6 @@ let g:neocomplCache_TagsAutoUpdate            = 1
 let g:neocomplCache_PreviousKeywordCompletion = 1
 let g:neocomplCache_MinSyntaxLength           = 3
 let g:neocomplCache_SkipInputTime             = '0.2'
-
-
-" pathogen.vim
-call pathogen#runtime_append_all_bundles()
 
 " Unite.vim
 nnoremap [unite] <Nop>
@@ -292,7 +306,7 @@ if has('autocmd')
 endif
 
 " Omni補完を<Tab>で
-function InsertTabWrapper()
+function! InsertTabWrapper()
     if pumvisible()
         return "\<c-n>"
     endif
