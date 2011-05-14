@@ -146,6 +146,9 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'YankRing.vim'
+Bundle 'Align'
 
 filetype plugin indent on " temporary on
 
