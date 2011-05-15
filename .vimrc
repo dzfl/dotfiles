@@ -149,6 +149,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'YankRing.vim'
 Bundle 'Align'
+Bundle 'nginx.vim'
 
 filetype plugin indent on " temporary on
 
@@ -211,6 +212,9 @@ nnoremap <silent> tp <Esc>:tabprevious<CR>
 setlocal omnifunc=syntaxcomplete#Complete
 
 autocmd! BufRead,BufNewFile *.as set filetype=actionscript
+autocmd! BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
+autocmd! BufRead,BufNewFile /etc/nginx/conf.d/* set ft=nginx
+autocmd! BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
 autocmd FileType actionscript :set dictionary=$HOME/.vim/dict/actionscript.dict
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading    = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails             = 1
@@ -346,3 +350,7 @@ command! ReloadFirefox :call ReloadFirefox()
 command! FirefoxStartObserve autocmd BufWritePost <buffer> :ReloadFirefox
 command! FirefoxStopObserve autocmd! BufWritePost <buffer>
 
+function Whatthecommit()
+    0r!curl -s http://whatthecommit.com/index.txt
+endfunction
+command Whatthecommit :call Whatthecommit()
