@@ -20,6 +20,8 @@ set hid
 " Vimのヤンク・ペーストがクリップボードを使うように
 set clipboard=unnamed,autoselect
 
+" 自動折り返し
+set wrap
 
 " 新しいバッファの改行コード
 set ffs=unix
@@ -62,7 +64,12 @@ set matchpairs+=<:>
 " ステータスラインを常に表示
 set laststatus=2
 " ステータスライン
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l(%L),%c%V%8P
+" http://vim.g.hatena.ne.jp/eclipse-a/20080728/1217206885
+" skk.vimのモードを'statusline'を変更していても表示する
+function! StlFnc()
+    return '[' . (&l:ft != '' ? &l:ft . ',' : '') . &l:ff[0] . ',' .  (&l:fenc != '' ? &l:fenc : &enc) . ']'
+endfunction
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{exists('*SkkGetModeStr')?SkkGetModeStr():''}%=%l(%L),%c%V%8P
 " タブバーを常に表示
 set showtabline=2
 " タブの上限
@@ -107,7 +114,7 @@ set autoread
 set nobackup
 "set backupdir=$HOME/.vim/backup
 
-"set noswapfile
+set noswapfile
 "set directory=$HOME/.vim/temp
 
 
@@ -144,33 +151,56 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'ujihisa/neco-look'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-github'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'tyru/skk.vim'
+Bundle 'tyru/skkdict.vim'
 Bundle 'YankRing.vim'
 Bundle 'Align'
 Bundle 'nginx.vim'
+Bundle 'eregex.vim'
 
 filetype plugin indent on " temporary on
 
 
+" skk.vim
+let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.L"
+let skk_kutouten_type = "en"
+let skk_show_annotation = 1
+let skk_show_candidates_count = 0
+let skk_use_face = 1
+let skk_auto_save_jisyo = 1
+" insert modeを抜けてもmodeを維持するか
+let skk_keep_state=0
+" non-zeroなら<CR>で確定した時に改行文字を出力しない
+let skk_egg_like_newline = 1
+let g:skk_use_color_cursor = 1 "gui only
 
 
 " neocomplcache.vim
-let g:neocomplcache_enable_at_startup         = 1
-let g:neocomplcache_enable_ignore_case        = 1
-let g:neocomplcache_enable_auto_delimiter     = 1
-let g:neocomplCache_SmartCase                 = 1
-let g:neocomplCache_TagsAutoUpdate            = 1
-let g:neocomplCache_PreviousKeywordCompletion = 1
-let g:neocomplCache_MinSyntaxLength           = 3
-let g:neocomplCache_SkipInputTime             = '0.2'
+let g:neocomplcache_enable_at_startup          = 1
+let g:neocomplcache_enable_ignore_case         = 1
+let g:neocomplcache_enable_auto_delimiter      = 1
+let g:neocomplcache_enable_auto_select         = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length          = 3
+let g:neocomplCache_SmartCase                  = 1
+let g:neocomplCache_TagsAutoUpdate             = 1
+let g:neocomplCache_PreviousKeywordCompletion  = 1
+let g:neocomplCache_MinSyntaxLength            = 3
+let g:neocomplCache_SkipInputTime              = '0.2'
+" <TAB> completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" 補完候補が表示されている場合は確定。そうでない場合は改行
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 
 " Unite.vim
 nnoremap [unite] <Nop>
 nmap f [unite]
 
-nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files tab file_mru file file_rec<CR>
+nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files tab file file_rec file_mru<CR>
 nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=bookmark bookmark<CR>
 nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=register register<CR>
 nnoremap  [unite]s  :<C-u>Unite source<CR>
@@ -202,10 +232,13 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('open'
 nnoremap <silent> bd <Esc>:bw<CR>
 nnoremap <silent> bn <Esc>:bn<CR>
 nnoremap <silent> bp <Esc>:bp<CR>
+nnoremap <silent> te <Esc>:tabedit<CR>
 nnoremap <silent> tc <Esc>:tabnew<CR>
 nnoremap <silent> td <Esc>:tabclose<CR>
 nnoremap <silent> tn <Esc>:tabnext<CR>
 nnoremap <silent> tp <Esc>:tabprevious<CR>
+"aaa バッファ毎にタブで開きなおす. ごちゃごちゃした時用
+nnoremap <silent> ta :only<cr>:tabo<cr>:tab sball<cr>
 
 
 "-----------------------------
@@ -350,7 +383,16 @@ command! ReloadFirefox :call ReloadFirefox()
 command! FirefoxStartObserve autocmd BufWritePost <buffer> :ReloadFirefox
 command! FirefoxStopObserve autocmd! BufWritePost <buffer>
 
-function Whatthecommit()
+function! Whatthecommit()
     0r!curl -s http://whatthecommit.com/index.txt
 endfunction
-command Whatthecommit :call Whatthecommit()
+command! Whatthecommit :call Whatthecommit()
+
+" grep
+command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
+function! s:grep(args)
+    let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
+    execute 'vimgrep' '/' . a:args[0] . '/j ' . target
+    if len(getqflist()) != 0 | copen | endif
+endfunction
+

@@ -92,4 +92,7 @@ hi Pmenu           ctermbg=8
 hi PmenuSel        ctermbg=67
 hi PmenuSbar       ctermbg=0
 
-
+hi SpellLocal ctermfg=14  ctermbg=237
+hi SpellBad   ctermfg=9   ctermbg=237
+hi SpellCap   ctermfg=12  ctermbg=237
+hi SpellRare  ctermfg=13  ctermbg=237
