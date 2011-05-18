@@ -168,12 +168,25 @@ autocmd FileType *
 \ | endif
 
 
+" git-vim.vim
+let g:git_no_map_default = 1
+nnoremap <Leader>gd :GitDiff<Enter>
+nnoremap <Leader>gD :GitDiff --cached<Enter>
+nnoremap <Leader>gs :GitStatus<Enter>
+nnoremap <Leader>gl :GitLog<Enter>
+nnoremap <Leader>gL :GitLog -u \| head -10000<Enter>
+nnoremap <Leader>ga :GitAdd<Enter>
+nnoremap <Leader>gA :GitAdd <cfile><Enter>
+nnoremap <Leader>gc :GitCommit -v<Enter>
+" 確認のため<Enter>の打鍵を要求
+nnoremap <Leader>gp :GitPush
 
 " skk.vim
 let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.L"
 let skk_kutouten_type = "en"
-let skk_show_annotation = 1
-let skk_show_candidates_count = 0
+let skk_kutouten_en = ".,"
+let skk_show_annotation = 0
+let skk_show_candidates_count = 1
 let skk_use_face = 1
 let skk_auto_save_jisyo = 1
 " insert modeを抜けてもmodeを維持するか
@@ -263,7 +276,7 @@ autocmd! BufRead,BufNewFile *.as set filetype=actionscript
 autocmd! BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
 autocmd! BufRead,BufNewFile /etc/nginx/conf.d/* set ft=nginx
 autocmd! BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
-autocmd FileType actionscript :set dictionary=$HOME/.vim/dict/actionscript.dict
+autocmd FileType ruby set dictionary=$VIMRUNTIME/syntax/ruby.vim
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading    = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails             = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
