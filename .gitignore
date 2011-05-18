@@ -1,5 +1,7 @@
 .netrwhist
 .vim/bundle
+doc/tags
+doc/tags-ja
 *.dcu
 *.dsk
 *.identcache
