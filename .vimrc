@@ -273,10 +273,10 @@ nnoremap <silent> ta :only<cr>:tabo<cr>:tab sball<cr>
 setlocal omnifunc=syntaxcomplete#Complete
 
 autocmd! BufRead,BufNewFile *.as set filetype=actionscript
-autocmd! BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
-autocmd! BufRead,BufNewFile /etc/nginx/conf.d/* set ft=nginx
+autocmd! BufRead,BufNewFile /etc/nginx/*.conf            set ft=nginx
+autocmd! BufRead,BufNewFile /etc/nginx/conf.d/*          set ft=nginx
 autocmd! BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
-autocmd FileType ruby set dictionary=$VIMRUNTIME/syntax/ruby.vim
+autocmd FileType ruby,eruby :set dictionary=$VIMRUNTIME/syntax/ruby.vim
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading    = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails             = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
