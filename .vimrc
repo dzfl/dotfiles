@@ -123,6 +123,36 @@ set infercase
 
 
 "-----------------------------
+let g:gist_clip_command = 'xclip -selection clipboard'
+
+" vundle.vim
+filetype off " temporary off
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'ujihisa/neco-look'
+Bundle 'ujihisa/neco-ruby'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-github'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'mattn/googletranslate-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tyru/skk.vim'
+Bundle 'tyru/skkdict.vim'
+Bundle 'YankRing.vim'
+Bundle 'Align'
+Bundle 'nginx.vim'
+Bundle 'eregex.vim'
+Bundle 'motemen/git-vim'
+
+filetype plugin indent on " temporary on
+
+"-----------------------------
 " ハイライト
 syntax on
 colorscheme nitro
@@ -137,33 +167,6 @@ autocmd FileType *
 \ |   setlocal omnifunc=syntaxcomplete#Complete
 \ | endif
 
-
-"-----------------------------
-let g:gist_clip_command = 'xclip -selection clipboard'
-
-" vundle.vim
-filetype off " temporary off
-set rtp+=~/.vim/vundle/
-call vundle#rc()
-
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'ujihisa/neco-look'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-github'
-Bundle 'tpope/vim-surround'
-Bundle 'mattn/zencoding-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tyru/skk.vim'
-Bundle 'tyru/skkdict.vim'
-Bundle 'YankRing.vim'
-Bundle 'Align'
-Bundle 'nginx.vim'
-Bundle 'eregex.vim'
-Bundle 'motemen/git-vim'
-
-filetype plugin indent on " temporary on
 
 
 " skk.vim
@@ -183,15 +186,26 @@ let g:skk_use_color_cursor = 1 "gui only
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup          = 1
 let g:neocomplcache_enable_ignore_case         = 1
+let g:neocomplcache_enable_smart_case          = 1
+let g:neocomplcache_enable_wildcard            = 1
 let g:neocomplcache_enable_auto_delimiter      = 1
 let g:neocomplcache_enable_auto_select         = 1
 let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_keyword_length         = 3
 let g:neocomplcache_min_syntax_length          = 3
-let g:neocomplCache_SmartCase                  = 1
 let g:neocomplCache_TagsAutoUpdate             = 1
 let g:neocomplCache_PreviousKeywordCompletion  = 1
-let g:neocomplCache_MinSyntaxLength            = 3
 let g:neocomplCache_SkipInputTime              = '0.2'
+" 日本語をキャッシュしない
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby         = '[^. *\t]\.\h\w*\|\h\w*::'
 " <TAB> completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " 補完候補が表示されている場合は確定。そうでない場合は改行
