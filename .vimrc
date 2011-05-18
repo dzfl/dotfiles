@@ -161,6 +161,7 @@ Bundle 'YankRing.vim'
 Bundle 'Align'
 Bundle 'nginx.vim'
 Bundle 'eregex.vim'
+Bundle 'motemen/git-vim'
 
 filetype plugin indent on " temporary on
 
