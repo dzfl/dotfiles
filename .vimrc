@@ -114,8 +114,9 @@ set autoread
 set nobackup
 "set backupdir=$HOME/.vim/backup
 
-set noswapfile
-"set directory=$HOME/.vim/temp
+"set noswapfile
+set swapfile
+set directory=$HOME/.vim/tmp
 
 
 " 小文字で打った単語でも大文字で補完できるようにする。
@@ -205,8 +206,8 @@ let g:neocomplcache_enable_wildcard            = 1
 let g:neocomplcache_enable_auto_delimiter      = 1
 let g:neocomplcache_enable_auto_select         = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_keyword_length         = 3
-let g:neocomplcache_min_syntax_length          = 3
+let g:neocomplcache_min_keyword_length         = 2
+let g:neocomplcache_min_syntax_length          = 2
 let g:neocomplCache_TagsAutoUpdate             = 1
 let g:neocomplCache_PreviousKeywordCompletion  = 1
 let g:neocomplCache_SkipInputTime              = '0.2'
