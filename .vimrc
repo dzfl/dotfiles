@@ -239,6 +239,7 @@ nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=bookmark bookmark<CR>
 nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=register register<CR>
 nnoremap  [unite]s  :<C-u>Unite source<CR>
 
+" インサートモードで開始
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
 let g:unite_source_file_mru_ignore_pattern = '\%(^\|/\)\.$\|\~$\|\.\%(o|exe|dll|bak|dat|sw[po]|gif|jpg|png|mp3|ogg\)$|(^|[/\\])\.(hg|git|bzr|svn)'
@@ -258,8 +259,22 @@ call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 
 "" C-jでバッファに開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
+"au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
+"au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('open')
+" unite.vim上でのキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+    " 単語単位からパス単位で削除するように変更
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    " C-j でaction選択
+    nmap <buffer> <C-j> <Plug>(unite_choose_action)
+    imap <buffer> <C-j> <Plug>(unite_choose_action)
+    " Tabで候補を回す
+    nmap <buffer> <Tab>   <Plug>(unite_select_next_line)
+    imap <buffer> <Tab>   <Plug>(unite_select_next_line)
+    nmap <buffer> <S-Tab> <Plug>(unite_select_previous_line)
+    imap <buffer> <S-Tab> <Plug>(unite_select_previous_line)
+endfunction
 
 
 "-----------------------------
@@ -381,20 +396,20 @@ if has('autocmd')
 endif
 
 " Omni補完を<Tab>で
-"function! InsertTabWrapper()
-"    if pumvisible()
-"        return "\<c-n>"
-"    endif
-"    let col = col('.') - 1
-"    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-"        return "\<tab>"
-"    elseif exists('&omnifunc') && &omnifunc == ''
-"        return "\<c-n>"
-"    else
-"        return "\<c-x>\<c-o>"
-"    endif
-"endfunction
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+function! InsertTabWrapper()
+    if pumvisible()
+        return "\<c-n>"
+    endif
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+        return "\<tab>"
+    elseif exists('&omnifunc') && &omnifunc == ''
+        return "\<c-n>"
+    else
+        return "\<c-x>\<c-o>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " 場所毎の設定ファイル読み込み
 if filereadable(expand('~/.vimrc.local'))
