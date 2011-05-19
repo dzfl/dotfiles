@@ -149,6 +149,7 @@ Bundle 'Align'
 Bundle 'nginx.vim'
 Bundle 'eregex.vim'
 Bundle 'motemen/git-vim'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on " temporary on
 
@@ -219,10 +220,15 @@ if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby         = '[^. *\t]\.\h\w*\|\h\w*::'
-" <TAB> completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " 補完候補が表示されている場合は確定。そうでない場合は改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
+" SuperTab like snippets behavior.
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" :
+\<TAB>"
+" <TAB> completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
 
 " Unite.vim
 nnoremap [unite] <Nop>
@@ -272,7 +278,8 @@ nnoremap <silent> ta :only<cr>:tabo<cr>:tab sball<cr>
 "-----------------------------
 setlocal omnifunc=syntaxcomplete#Complete
 
-autocmd! BufRead,BufNewFile *.as set filetype=actionscript
+autocmd BufRead,BufNewFile $HOME/.zshrc set ft=zsh
+autocmd BufRead,BufNewFile $HOME/.zsh/* set ft=zsh
 autocmd! BufRead,BufNewFile /etc/nginx/*.conf            set ft=nginx
 autocmd! BufRead,BufNewFile /etc/nginx/conf.d/*          set ft=nginx
 autocmd! BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
@@ -374,20 +381,20 @@ if has('autocmd')
 endif
 
 " Omni補完を<Tab>で
-function! InsertTabWrapper()
-    if pumvisible()
-        return "\<c-n>"
-    endif
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-        return "\<tab>"
-    elseif exists('&omnifunc') && &omnifunc == ''
-        return "\<c-n>"
-    else
-        return "\<c-x>\<c-o>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"function! InsertTabWrapper()
+"    if pumvisible()
+"        return "\<c-n>"
+"    endif
+"    let col = col('.') - 1
+"    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+"        return "\<tab>"
+"    elseif exists('&omnifunc') && &omnifunc == ''
+"        return "\<c-n>"
+"    else
+"        return "\<c-x>\<c-o>"
+"    endif
+"endfunction
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " 場所毎の設定ファイル読み込み
 if filereadable(expand('~/.vimrc.local'))
