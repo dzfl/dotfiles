@@ -24,7 +24,7 @@ hi ErrorMsg        ctermfg=15  ctermbg=196
 hi WarningMsg      ctermfg=196 ctermbg=NONE
 hi ModeMsg         ctermfg=109 cterm=NONE
 hi MoreMsg         ctermfg=109
-hi Question        ctermfg=15
+hi Question        ctermfg=192
 
 " Split area
 hi StatusLine      ctermfg=254   ctermbg=237 cterm=NONE
@@ -57,29 +57,29 @@ hi Visual          ctermfg=0    ctermbg=109
 hi Comment         ctermfg=245
 
 hi Constant        ctermfg=73
-hi String          ctermfg=67
-hi Character       ctermfg=30
-hi Number          ctermfg=66
+hi String          ctermfg=66
+hi Character       ctermfg=145
+hi Number          ctermfg=144
 hi Boolean         ctermfg=108
 hi Float           ctermfg=66
 hi Error           ctermfg=15   ctermbg=196
 
 hi Identifier      ctermfg=203  cterm=NONE
-hi Function        ctermfg=205
+hi Function        ctermfg=154
 
-hi Statement       ctermfg=144
-hi Conditional     ctermfg=144
-hi Repeat          ctermfg=144
-hi Label           ctermfg=144
+hi Statement       ctermfg=107
+hi Conditional     ctermfg=107
+hi Repeat          ctermfg=107
+hi Label           ctermfg=251
 hi Operator        ctermfg=145
 hi Keyword         ctermfg=144
 hi Exception       ctermfg=144
 
 hi Ignore          ctermfg=NONE ctermbg=NONE
-hi PreProc         ctermfg=175
+hi PreProc         ctermfg=151
 hi Special         ctermfg=138
-hi Todo            ctermfg=0    ctermbg=11
-hi Type            ctermfg=15
+hi Todo            ctermfg=0    ctermbg=3
+hi Type            ctermfg=110
 hi Underlined      ctermfg=202  cterm=underline
 
 " Tab

@@ -132,8 +132,8 @@ local C_NC=$'%{\e[38;5;252m%}'
 local C_BLACK=$'%{\e[38;5;240m%}'
 local C_L_WHITE=$'%{\e[38;5;255m%}'
 local C_BLUE=$'%{\e[38;5;45m%}'
-local C_GREEN=$'%{\e[38;5;114m%}'
-local C_CYAN=$'%{\e[38;5;117m%}'
+local C_GREEN=$'%{\e[38;5;30m%}'
+local C_CYAN=$'%{\e[38;5;24m%}'
 local C_RED=$'%{\e[38;5;174m%}'
 local C_PURPLE=$'%{\e[38;5;177m%}'
 local C_YELLOW=$'%{\e[38;5;229m%}'
@@ -146,8 +146,8 @@ PROMPT=$'\n'\
 $C_NC"["\
 $C_WHITE"\${USER}"$C_BLACK"@"$C_GRAY"\${HOST}"\
 $C_NC"] "\
-$C_NAVY"\${newPWD}"\
-"%1(v|%f$C_PINK%1v%f|)"\
+$C_CYAN"\${newPWD}"\
+"%1(v|%f$C_GREEN%1v%f|)"\
 $'\n'\
 $C_CYAN"%(!.#.$)"%b\
 $'%{\e[m%} '
