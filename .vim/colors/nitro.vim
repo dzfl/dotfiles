@@ -27,10 +27,10 @@ hi MoreMsg         ctermfg=109
 hi Question        ctermfg=192
 
 " Split area
-hi StatusLine      ctermfg=254   ctermbg=237 cterm=NONE
-hi StatusLineNC    ctermfg=0   ctermbg=243 cterm=NONE
+hi StatusLine      ctermfg=232 ctermbg=30
+hi StatusLineNC    ctermfg=232 ctermbg=244
 hi VertSplit       ctermfg=240
-hi WildMenu        ctermfg=109
+hi WildMenu        ctermfg=14 ctermbg=235
 
 " Diff
 "hi DiffText        ctermfg=NONE ctermbg=NONE
@@ -49,7 +49,7 @@ hi FoldColumn      ctermfg=109
 "hi Directory       ctermfg=2    ctermbg=NONE
 hi LineNr          ctermfg=243  ctermbg=0
 hi NonText         ctermfg=88
-hi SpecialKey      ctermfg=236  ctermbg=NONE
+hi SpecialKey      ctermfg=240  ctermbg=NONE
 hi Title           ctermfg=109  ctermbg=NONE
 hi Visual          ctermfg=0    ctermbg=109
 
@@ -88,9 +88,10 @@ hi TabLineSel      cterm=underline ctermfg=15 ctermbg=NONE
 hi TabLineFill     cterm=underline ctermfg=240 ctermbg=NONE
 
 " Pmenu
-hi Pmenu           ctermbg=8
-hi PmenuSel        ctermbg=67
-hi PmenuSbar       ctermbg=0
+hi Pmenu           ctermfg=247  ctermbg=235
+hi PmenuSel        ctermfg=14   ctermbg=238
+hi PmenuSbar       ctermfg=238    ctermbg=234
+hi PmenuThumb      ctermfg=66
 
 hi SpellLocal ctermfg=14  ctermbg=237
 hi SpellBad   ctermfg=9   ctermbg=237

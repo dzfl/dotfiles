@@ -148,9 +148,10 @@ Bundle 'tyru/skkdict.vim'
 Bundle 'YankRing.vim'
 Bundle 'Align'
 Bundle 'nginx.vim'
-Bundle 'eregex.vim'
 Bundle 'motemen/git-vim'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'othree/eregex.vim'
+
 
 filetype plugin indent on " temporary on
 
@@ -175,7 +176,7 @@ let g:git_no_map_default = 1
 nnoremap <Leader>gd :GitDiff<Enter>
 nnoremap <Leader>gD :GitDiff --cached<Enter>
 nnoremap <Leader>gs :GitStatus<Enter>
-nnoremap <Leader>gl :GitLog<Enter>
+nnoremap <Leader>gl :GitLog --stat -p<Enter>
 nnoremap <Leader>gL :GitLog -u \| head -10000<Enter>
 nnoremap <Leader>ga :GitAdd<Enter>
 nnoremap <Leader>gA :GitAdd <cfile><Enter>
@@ -276,6 +277,14 @@ function! s:unite_my_settings()
     nmap <buffer> <S-Tab> <Plug>(unite_select_previous_line)
     imap <buffer> <S-Tab> <Plug>(unite_select_previous_line)
 endfunction
+
+
+"-----------------------------
+" xmpfilter
+noremap <silent> <Space>xa :!xmpfilter -a<CR>
+nmap    <silent> <Space>xa V<Space>xa
+noremap <silent> <Space>xm :!xmpfilter -m<CR>
+nmap    <silent> <Space>xm V<Space>xm
 
 
 "-----------------------------
