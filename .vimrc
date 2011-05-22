@@ -81,7 +81,7 @@ set scrolloff=5
 " タブや改行を表示する
 set list
 " 特殊文字の置き換え
-set listchars=tab:>-,trail:_,eol:\ ,extends:>,precedes:<
+set listchars=tab:\|\ ,trail:_,eol:\ ,extends:>,precedes:<
 
 
 " マウスモードを有効
@@ -151,6 +151,7 @@ Bundle 'nginx.vim'
 Bundle 'motemen/git-vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'othree/eregex.vim'
+Bundle 'hail2u/vim-css3-syntax'
 
 
 filetype plugin indent on " temporary on
