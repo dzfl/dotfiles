@@ -28,3 +28,4 @@ log/**/*
 tmp/**/*
 bin/*
 .sass-cache/*
+.vim/tmp

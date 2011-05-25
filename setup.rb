@@ -33,7 +33,7 @@ if 'dotfiles'.expand.exist?
 	cd 'dotfiles'
 	sh 'git pull'
 else
-	sh 'git clone git://github.com/dzfl/dotfiles.git dotfiles'
+	sh 'git clone git://github.com/dzfl/dotfiles.git dotfiles --recursive'
 	cd 'dotfiles'
 end
 
@@ -46,9 +46,9 @@ Dir[".*"].reject {|i| /\.$|^\.git$/ === i }.each do |i|
 	link i, "~/#{i}"
 end
 
-# vim vundle plugin submodule checkout
-sh 'git submodule init'
-sh 'git submodule update'
-p "!! forgot vim plugin install"
-p "    :BundleInstall"
+p "### forgot vim plugin install"
+p "#"
+p "#   :BundleInstall"
+p "#"
+p "###"
 

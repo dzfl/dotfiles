@@ -250,4 +250,6 @@ preexec_functions=($preexec_functions last_command_for_screen_title)
 #        curl -s http://outputz.com/api/post -F key=${key} -F uri=http://zsh.localhost/ -F size=${#1} >/dev/null
 #    fi
 
+# local setting
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
