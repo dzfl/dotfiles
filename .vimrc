@@ -165,12 +165,6 @@ filetype on
 filetype indent on
 filetype plugin on
 
-" 注意: この内容は:filetype onよりも後に記述すること。
-autocmd FileType *
-\   if &l:omnifunc == ''
-\ |   setlocal omnifunc=syntaxcomplete#Complete
-\ | endif
-
 
 " git-vim.vim
 let g:git_no_map_default = 1
@@ -218,19 +212,27 @@ if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Enable omni completion.
+autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd! FileType eruby,html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd! FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby         = '[^. *\t]\.\h\w*\|\h\w*::'
+
 " 補完候補が表示されている場合は確定。そうでない場合は改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-" SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
-\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" :
-\<TAB>"
 " <TAB> completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" SuperTab like snippets behavior.
+" imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><CR> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<CR>"
+
 
 
 " Unite.vim
@@ -297,7 +299,7 @@ nnoremap <silent> tc <Esc>:tabnew<CR>
 nnoremap <silent> td <Esc>:tabclose<CR>
 nnoremap <silent> tn <Esc>:tabnext<CR>
 nnoremap <silent> tp <Esc>:tabprevious<CR>
-"aaa バッファ毎にタブで開きなおす. ごちゃごちゃした時用
+" バッファ毎にタブで開きなおす. ごちゃごちゃした時用
 nnoremap <silent> ta :only<cr>:tabo<cr>:tab sball<cr>
 
 
@@ -407,20 +409,20 @@ if has('autocmd')
 endif
 
 " Omni補完を<Tab>で
-function! InsertTabWrapper()
-    if pumvisible()
-        return "\<c-n>"
-    endif
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-        return "\<tab>"
-    elseif exists('&omnifunc') && &omnifunc == ''
-        return "\<c-n>"
-    else
-        return "\<c-x>\<c-o>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"function! InsertTabWrapper()
+"    if pumvisible()
+"        return "\<c-n>"
+"    endif
+"    let col = col('.') - 1
+"    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+"        return "\<tab>"
+"    elseif exists('&omnifunc') && &omnifunc == ''
+"        return "\<c-n>"
+"    else
+"        return "\<c-x>\<c-o>"
+"    endif
+"endfunction
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " 場所毎の設定ファイル読み込み
 if filereadable(expand('~/.vimrc.local'))
