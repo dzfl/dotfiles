@@ -415,48 +415,26 @@ if has('autocmd')
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 
-" Omni補完を<Tab>で
-"function! InsertTabWrapper()
-"    if pumvisible()
-"        return "\<c-n>"
-"    endif
-"    let col = col('.') - 1
-"    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-"        return "\<tab>"
-"    elseif exists('&omnifunc') && &omnifunc == ''
-"        return "\<c-n>"
-"    else
-"        return "\<c-x>\<c-o>"
-"    endif
-"endfunction
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
-" 場所毎の設定ファイル読み込み
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
-endif
-
+" auto reload firefox
 function! ReloadFirefox()
-    if has('ruby')
-:ruby << EOF
-    require "net/telnet"
-    telnet = Net::Telnet.new({
-        "Host" => "192.168.1.17",
-        "Port" => 4242
-        })
-        telnet.puts("content.location.reload(true)\n")
-        telnet.close
-EOF
-    endif
+	!echo
+				\ " repl1.home();
+				\ content.location.reload(true);
+				\ repl1.quit "
+				\ | nc 192.168.1.17 4242 >/dev/null
 endfunction
 command! ReloadFirefox :call ReloadFirefox()
-command! FirefoxStartObserve autocmd BufWritePost <buffer> :ReloadFirefox
+command! FirefoxStartObserve autocmd BufWritePost <buffer> silent :ReloadFirefox
 command! FirefoxStopObserve autocmd! BufWritePost <buffer>
 
+
+" useful commit message generator
 function! Whatthecommit()
     0r!curl -s http://whatthecommit.com/index.txt
 endfunction
 command! Whatthecommit :call Whatthecommit()
+
 
 " grep
 command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
@@ -465,4 +443,10 @@ function! s:grep(args)
     execute 'vimgrep' '/' . a:args[0] . '/j ' . target
     if len(getqflist()) != 0 | copen | endif
 endfunction
+
+
+" 環境毎の設定ファイル読み込み
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
 
