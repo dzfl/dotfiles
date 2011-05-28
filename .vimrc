@@ -46,6 +46,10 @@ set incsearch
 set hlsearch
 
 
+" カーソルライン
+set nocursorline
+" カーソルカラム
+set nocursorcolumn
 " 行番号を表示する
 set number
 " ルーラーを表示
@@ -152,6 +156,9 @@ Bundle 'motemen/git-vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'othree/eregex.vim'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'othree/html5.vim'
+
+Bundle 'dzfl/github-color.vim'
 
 
 filetype plugin indent on " temporary on
@@ -159,7 +166,7 @@ filetype plugin indent on " temporary on
 "-----------------------------
 " ハイライト
 syntax on
-colorscheme nitro
+colorscheme github
 
 filetype on
 filetype indent on

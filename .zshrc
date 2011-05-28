@@ -100,6 +100,7 @@ autoload -Uz zmv
 
 # vcs on prompt
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' branchformat '%b:r%r'
 zstyle ':vcs_info:*' formats ' %s:%b'
 zstyle ':vcs_info:*' actionformats ' %s:%b\!%a'
 function prompt_misc() {
