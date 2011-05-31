@@ -419,9 +419,9 @@ endif
 " auto reload firefox
 function! ReloadFirefox()
 	!echo
-				\ " repl1.home();
+				\ " repl.home();
 				\ content.location.reload(true);
-				\ repl1.quit "
+				\ repl.quit "
 				\ | nc 192.168.1.17 4242 >/dev/null
 endfunction
 command! ReloadFirefox :call ReloadFirefox()
