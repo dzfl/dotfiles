@@ -155,8 +155,8 @@ $'%{\e[m%} '
 
 ### history
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt share_history
 
 ### alias
@@ -262,6 +262,7 @@ zshaddhistory() {
         && ${cmd} != (l|l[sal])
         && ${cmd} != (c|cd)
         && ${cmd} != (m|man)
+        && ${cmd} != (f|fg)
     ]]
 }
 
