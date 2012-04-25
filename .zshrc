@@ -5,12 +5,17 @@
 
 ### path
 FLEX_HOME='/usr/local/lib/flex'
-PATH="$PATH:/usr/sbin:$HOME/bin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
+#PATH="$PATH:/usr/sbin:$HOME/bin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
+PATH="$PATH:/usr/sbin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
 export PATH
 
 export RUBYOPT=rubygems
 
 export GISTY_DIR="$HOME/gist"
+
+#if [[ -s /home/tomo/.rvm/scripts/rvm ]] ; then
+#    source /home/tomo/.rvm/scripts/rvm
+#fi
 
 ### lang
 export LANG=ja_JP.UTF-8
@@ -218,7 +223,7 @@ function pcolor() {
 # e.g) cdf .vim
 function cdf() {
     local -a tmpparent; tmpparent=""
-    local -a filename; filename="${1}"
+    local -a filename; filename=""
     local -a file
     local -a num; num=0
     while [ $num -le 10 ]; do
@@ -263,6 +268,7 @@ zshaddhistory() {
         && ${cmd} != (c|cd)
         && ${cmd} != (m|man)
         && ${cmd} != (f|fg)
+        && ${cmd} != (b|bg)
     ]]
 }
 

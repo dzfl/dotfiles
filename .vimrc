@@ -137,6 +137,7 @@ call vundle#rc()
 
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'ujihisa/neco-look'
 Bundle 'ujihisa/neco-ruby'
 Bundle 'thinca/vim-ref'
@@ -152,13 +153,14 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'tyru/skk.vim'
 Bundle 'tyru/skkdict.vim'
 Bundle 'YankRing.vim'
-Bundle 'Align'
 Bundle 'nginx.vim'
 Bundle 'motemen/git-vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'othree/eregex.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'othree/html5.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'pangloss/vim-javascript'
 
 Bundle 'dzfl/github-color.vim'
 
@@ -205,14 +207,15 @@ let g:skk_use_color_cursor = 1 "gui only
 
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup          = 1
+let g:neocomplcache_max_list                   = 40
 let g:neocomplcache_enable_ignore_case         = 1
 let g:neocomplcache_enable_smart_case          = 1
 let g:neocomplcache_enable_wildcard            = 1
 let g:neocomplcache_enable_auto_delimiter      = 1
 let g:neocomplcache_enable_auto_select         = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_keyword_length         = 2
-let g:neocomplcache_min_syntax_length          = 2
+let g:neocomplcache_min_keyword_length         = 3
+let g:neocomplcache_min_syntax_length          = 3
 let g:neocomplCache_TagsAutoUpdate             = 1
 let g:neocomplCache_PreviousKeywordCompletion  = 1
 let g:neocomplCache_SkipInputTime              = '0.2'
@@ -232,7 +235,7 @@ autocmd! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.ruby         = '[^. *\t]\.\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 " 補完候補が表示されている場合は確定。そうでない場合は改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
@@ -328,9 +331,11 @@ autocmd FileType yaml   set   expandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 autocmd FileType ruby   set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 autocmd FileType python set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 autocmd FileType php    set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
+autocmd FileType html   set noexpandtab ts=2 sw=2 ff=unix enc=utf-8 fenc=utf-8
 
 autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skeleton.ruby
 autocmd BufNewFile *.py 0r $HOME/.vim/templates/skeleton.py
+autocmd BufNewFile *.html 0r $HOME/.vim/templates/skeleton.html
 
 
 "-----------------------------
@@ -416,6 +421,9 @@ if has('autocmd')
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
+
+set fileencodings=iso-2022-jp-3,eucjp-ms,utf-8,cp932,ucs-bom,default,latin1
+
 
 
 " auto reload firefox
