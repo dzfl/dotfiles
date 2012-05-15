@@ -132,37 +132,39 @@ let g:gist_clip_command = 'xclip -selection clipboard'
 
 " vundle.vim
 filetype off " temporary off
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/neobundle/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
-Bundle 'ujihisa/neco-look'
-Bundle 'ujihisa/neco-ruby'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-github'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
-Bundle 'mattn/zencoding-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/googletranslate-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tyru/skk.vim'
-Bundle 'tyru/skkdict.vim'
-Bundle 'YankRing.vim'
-Bundle 'nginx.vim'
-Bundle 'motemen/git-vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'othree/eregex.vim'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'othree/html5.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'pangloss/vim-javascript'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'ujihisa/neco-ruby'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-github'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-cucumber'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/googletranslate-vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tyru/skk.vim'
+NeoBundle 'tyru/skkdict.vim'
+NeoBundle 'YankRing.vim'
+NeoBundle 'nginx.vim'
+NeoBundle 'motemen/git-vim'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'pangloss/vim-javascript'
 
-Bundle 'dzfl/github-color.vim'
+NeoBundle 'dzfl/github-color.vim'
 
 
 filetype plugin indent on " temporary on
