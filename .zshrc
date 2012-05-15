@@ -4,9 +4,9 @@
 [ ${STY} ] || screen -rx || screen -D -RR -U
 
 ### path
-FLEX_HOME='/usr/local/lib/flex'
+RUBYGEMS=$HOME'/.gem/ruby/1.8/bin'
 #PATH="$PATH:/usr/sbin:$HOME/bin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
-PATH="$PATH:/usr/sbin:$FLEX_HOME/bin:$FLEX_HOME/player/debug"
+PATH="$PATH:/usr/sbin:$FLEX_HOME/bin:$RUBYGEMS"
 export PATH
 
 export RUBYOPT=rubygems
@@ -183,6 +183,7 @@ alias -g G='| grep '
 alias -g L='| lv'
 alias apacherestart='sudo apache2ctl configtest && apache2ctl gracefula'
 alias vim="vim -X"
+alias gem="gem1.8"
 
 
 # 補完時に大小文字を区別しない
